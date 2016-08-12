@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shopModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular</title>
+
+    <script src="js/angular.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="js/app.js"></script>
+</head>
+<body>
+
+<style>
+    .wrapper{
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .done-true{
+        text-decoration: underline;
+        color: RED;
+    }
+
+    .done-false{
+        color: #cccccc;
+        text-decoration: line-through;
+    }
+</style>
+
+<div class="wrapper" ng-controller="shopCtrl">
+
+    <div class="counter">
+        Куплено {{buyItems()}} из {{items.length}}
+    </div>
+    <table class="table table-striped">
+        <tr ng-repeat="item in items">
+            <td>
+                <input class="checkbox-inline" type="checkbox" ng-model="item.done">
+            </td>
+            <td>
+                <span class="done-{{item.done}}">{{item.name}}</span>
+            </td>
+            <td>
+                <button ng-click="deleteItem(item.id);">Удалить</button>
+            </td>
+        </tr>
+    </table>
+
+    <form ng-submit="addItem()">
+        <input type="text" ng-model="itemText" class="form-control">
+        <input type="submit" value="Добавить">
+    </form>
+
+
+
+    <div class="include" >
+        <input type="checkbox" class="form-control" ng-model="list">
+    </div>
+
+    <div class="check">
+        <p ng-repeat="checkbox in checkboxs" >
+            <input type="checkbox" ng-model="checkbox.checked">
+        </p>
+    </div>
+
+    <button ng-click="checkAllCheckboxs(checkboxs);">Выделить/снять</button>
+</div>
+
+</body>
+</html>
